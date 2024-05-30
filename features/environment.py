@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 
 from app.application import Application
-from support.logger import logger
+# from support.logger import logger
 
 #  Run Behave tests with Allure results
 # behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/target_app_ui_tests.feature
@@ -69,17 +69,20 @@ def browser_init(context, scenario_name):
 
 def before_scenario(context, scenario):
     # logger.info(f'Started scenario: , {scenario.name}')
+    print('\nStarted scenario: ', scenario.name)
     browser_init(context, scenario.name)
 
 
 def before_step(context, step):
-    logger.info(f'Started scenario: , {step}')
+    print('\nStarted step: ', step)
+    # logger.info(f'Started scenario: , {step}')
 
 
 def after_step(context, step):
     if step.status == 'failed':
-        logger.warning(f'Step failed: , {step}')
+        # logger.warning(f'Step failed: , {step}')
         context.app.base_page.save_screenshot(step)
+        print('\nStep failed: ', step)
 
 
 def after_scenario(context, feature):
