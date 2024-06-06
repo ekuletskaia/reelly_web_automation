@@ -36,31 +36,31 @@ def browser_init(context, scenario_name):
     # context.driver = webdriver.Safari()
 
     ### HEADLESS MODE ####
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
-    options.add_argument('--window-size=1920,1080')
-    service = Service(ChromeDriverManager().install())
-    context.driver = webdriver.Chrome(
-        options=options,
-        service=service
-    )
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('headless')
+    # options.add_argument('--window-size=1920,1080')
+    # service = Service(ChromeDriverManager().install())
+    # context.driver = webdriver.Chrome(
+    #     options=options,
+    #     service=service
+    # )
 
     ### BROWSERSTACK ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    # bs_user = 'lenakuletsky_SKaVUT'
-    # bs_key = 'W9FLyyLLHFBYCqawWphz'
-    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    #
-    # options = Options()
-    # bstack_options = {
-    #     'osVersion': '10.0',
-    #     # 'os': 'OS X',
-    #     'deviceName': 'Samsung Galaxy Note 20 Ultra',
-    #     'browserName': 'chrome',
-    #     'sessionName': scenario_name
-    # }
-    # options.set_capability('bstack:options', bstack_options)
-    # context.driver = webdriver.Remote(command_executor=url, options=options)
+    bs_user = 'lenakuletsky_SKaVUT'
+    bs_key = 'W9FLyyLLHFBYCqawWphz'
+    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+
+    options = Options()
+    bstack_options = {
+        'osVersion': 'monterey',
+        'os': 'OS X',
+        # 'deviceName': 'Samsung Galaxy Note 20 Ultra',
+        'browserName': 'chrome',
+        'sessionName': scenario_name
+    }
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
