@@ -11,6 +11,9 @@ class MainPage(Page):
     OFF_PLAN_MENU = (By.CSS_SELECTOR, ".menu-twobutton")
     PRODUCTS_ON_THE_PAGE = (By.XPATH, '//a[@wized="cardOfProperty"]')
 
+    # Emulator
+    OFF_PLAN_BUTTON = (By.CSS_SELECTOR, ".menu-link.w--current")
+
     def open_login_page(self):
         self.driver.get("https://soft.reelly.io/sign-in")
 
@@ -20,6 +23,8 @@ class MainPage(Page):
         self.wait_until_clickable_click(*self.CONTINUE_BTN)
 
     def click_off_plan_menu(self):
-        # sleep(5)
-        # self.verify_visibility_of_element_located(*self.OFF_PLAN_MENU)
         self.wait_until_clickable_click(*self.OFF_PLAN_MENU)
+
+    def tap_on_off_plan_button(self):
+        self.wait_until_clickable_click(*self.OFF_PLAN_BUTTON)
+

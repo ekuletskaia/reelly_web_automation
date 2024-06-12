@@ -16,3 +16,8 @@ def login_reelly(context, email, password):
 @when('Click on “off plan” at the left side menu')
 def click_on_off_plan_menu(context):
     context.app.main_page.click_off_plan_menu()
+
+
+@when('Tap on “off plan” at the left side menu')
+def tap_on_off_plan_button(context):
+    context.app.main_page.tap_on_off_plan_button()
